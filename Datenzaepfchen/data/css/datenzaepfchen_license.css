@@ -1,0 +1,12 @@
+.flexbox {
+    justify-content: space-between;
+}
+
+.flexbox::before, .flexbox::after {
+  content: ''; /* Insert space to make justify-content behave like center with different overflow-semantics */
+}
+
+pre {
+	background-color: inherit;
+	border: none;
+}
