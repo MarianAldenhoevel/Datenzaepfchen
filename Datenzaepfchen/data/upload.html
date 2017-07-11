@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<title>Datenzäpfchen - Download</title>
+	<title>Datenzäpfchen - Upload</title>
 	<link rel="icon" type="image/png" href="/img/favicon.png">
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
@@ -28,22 +28,21 @@
 <body>
 	<div class="page">
 		<div class="panel panel-default">
-			<div class="panel-heading"><span class="glyphicon glyphicon-download"></span>&nbsp;Datenzäpfchen - Download</div>
+			<div class="panel-heading"><span class="glyphicon glyphicon-upload"></span>&nbsp;Datenzäpfchen - Upload</div>
 			<div class="panel-body">
-				<ul>
-					<li>Datei 1.txt</li>
-					<li>Musik.mp3</li>
-				</ul>
+				<div class="form-group">
+					<input id="upload" name="upload[]" multiple type="file" class="file-loading" accept="*">
+				</div>
 			</div>
 			<div class="panel-footer">
-				<button id="btnUpload"  type="button" class="btn btn-default">Upload</button>
-				<button id="btnLicense" type="button" class="btn btn-default pull-right">License</button>
+				<button id="btnDownload" type="button" class="btn btn-default">Download</button>
+				<button id="btnLicense"  type="button" class="btn btn-default pull-right">License</button>
 			</div>
 		</div>
 	</div>
 </body>
 
 <script src="/js/datenzaepfchen.js"></script>
-<script src="/js/datenzaepfchen_index.js"></script>
+<script src="/js/datenzaepfchen_upload.js"></script>
 
 </html>

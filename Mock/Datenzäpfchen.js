@@ -12,6 +12,7 @@ var serve_static = require("serve-static")
 var http = require("http");
 var path = require("path");
 var formidable = require("express-formidable");
+var fs = require("fs");
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(morgan("dev"));
 app.use(formidable({
   encoding: "utf-8",
   uploadDir: path.join(__dirname, "upload"),
+  keepExtensions: true,
   multiples: true, // req.files to be arrays of files 
 }));
 
@@ -45,8 +47,26 @@ app.use(function (req, res, next) {
 });
 
 app.post('/upload', (req, res) => {
-  console.log(req.fields); // contains non-file fields 
-  console.log(req.files); // contains files 
+  // console.log(req.files);
+  
+  for (var prop in req.files) {
+    if (req.files.hasOwnProperty(prop)) {
+        file = req.files[prop];
+		// console.log(file);
+		
+		var src = file.path;
+		var dest = path.join(__dirname, "upload", file.name);
+	
+		console.log("uploaded: " + dest);
+	
+		fs.rename(src, dest, function(err) {
+			if (err) {
+				console.log('ERROR: ' + err);
+				res.json(err);
+			}
+		});
+	}
+  }
   
   /*
   var result = {
